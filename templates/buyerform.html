@@ -1,0 +1,245 @@
+<!-- buyer form searches "database" according to preference, displays all listings and gives option to select for purchase-->
+
+<html>
+<head>
+
+ <!-- JQuery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+      var entries = {{entries|tojson}}
+    </script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ url_for('static', filename = 'buyerform.js') }}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+	<style>
+		 .center{
+        text-align: center;
+    }
+    .bold{
+        font-weight: bold;
+    }
+    .subtitle{
+      font-size: 12;
+      font-weight: bolder;
+      color: #B60F0F;     
+    }
+    .centerImg{
+        margin: auto;
+        display: block;
+    }
+    #buyer{
+      background: white;
+    }
+    #seller{
+      background: white;
+    }
+    #buyerform{
+      margin: auto;
+      display: block;
+      padding: 0 100 0 100;
+    }
+    .roboto{
+          font-family: 'Roboto Mono'
+        }
+        .green{
+          background-color: #8BC3A3;
+        }
+        .jumbotron{
+          margin-bottom: 0rem;
+        }
+        h2{
+          margin-bottom: 0rem;
+          padding-bottom: 10px;
+        }
+    #contact{
+    padding:10px 0 10px;
+  }
+
+  .contact-text{
+    margin:45px auto;
+  }
+
+  .mail-message-area{
+    width:100%;
+    padding:0 15px;
+  }
+
+  .mail-message{
+    width: 100%;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+  }
+
+
+  .not-visible-message{
+    height:0px;
+    opacity: 0;
+  }
+
+  .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+
+/* Input Styles */
+
+  .form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .form:hover{
+    border:1px solid #8BC3A3;
+  }
+
+  .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #8BC3A3;
+  }
+
+  .textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  
+/* Generic Button Styles */
+
+  .button{
+    padding:8px 12px;
+    background:#0A5175;
+    display: block;
+    width:120px;
+    margin:10px 0 0px 0;
+    border-radius:3px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align:center;
+    font-size:0.8em;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .button:hover{
+    background:#8BC3A3;
+    color:white;
+  }
+
+/* Send Button Styles */
+
+  .form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    border-radius:3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .form-btn:hover{
+    background:#111;
+    color: white;
+    border:none;
+  }
+
+  .form-btn:active{
+    opacity: 0.9;
+  }
+/*.center{
+  margin-top:330px;
+}*/
+input {
+    position: relative;
+    z-index: 9999;
+}
+select {
+  height: 50px;
+}
+.bord{
+  border-bottom: 1px solid lavender;
+  padding: 10px 0px 10px 0px;
+}
+img{
+  width: 45px;
+}
+.padup{
+  padding-top: 20px;
+}
+.hilite{
+  background-color: lightgrey;
+}
+.btn{
+  border-radius: 0;
+}
+
+	</style>
+</head>
+
+
+<body>
+<div class="container-narrow roboto"> 
+
+   <div class="jumbotron">
+    <h1 class="center bold ">Z E E Y A</h1> <br>
+    <h4 class="center "><i> an online marketplace to buy and sell upcoming exercise classes at a discount to retail</i></h4>
+  </div> 
+</div>
+
+<br><br>
+
+      <div class="container roboto">
+        <!-- Left Inputs -->
+       
+        <div class="wow animated slideInLeft" data-wow-delay=".5s">                               
+            <!-- Exercise Category Button Collection -->
+            <div id="exerciseType" class="row">
+              <button type="button" id="Cycling" name="submit" class="form-btn semibold bggreen">Cycling</button> 
+              <button type="button" id="Dance/Barre" name="submit" class="form-btn semibold bggreen">Dance/Barre</button> 
+              <button type="button" id="HIIT" name="submit" class="form-btn semibold bggreen">HIIT</button> 
+              <button type="button" id="Pilates" name="submit" class="form-btn semibold bggreen">Pilates</button> 
+              <button type="button" id="Running" name="submit" class="form-btn semibold bggreen">Running</button> 
+            </div>
+         </div><br>
+        </div>
+   
+        <!-- Bottom Submit -->
+        <div class="container-narrow roboto">
+        <div id="results" style="margin: auto; display: block; padding: 0 100 0 100;">
+            <!-- Display relevant results -->
+        </div><!-- End Bottom Submit -->
+      </div>
+      
+</body>
+</html>

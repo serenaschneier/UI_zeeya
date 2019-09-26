@@ -1,0 +1,337 @@
+<html>
+<head>
+
+ <!-- JQuery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+      var entries = {{entries|tojson}}
+    </script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <!-- bootstrap -->
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'sellerform.js') }}"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+  <style>
+    .center{
+        text-align: center;
+    }
+    .bold{
+        font-weight: bold;
+    }
+    .centerImg{
+        margin: auto;
+        display: block;
+    }
+       .subtitle{
+      font-size: 12;
+      font-weight: bolder;
+      color: #B60F0F;     
+    }
+    #buyer{
+      background: white;
+    }
+    #seller{
+      background: white;
+    }
+    #buyerform{
+      margin: auto;
+      display: block;
+      padding: 0 100 0 100;
+    }
+    .roboto{
+          font-family: 'Roboto Mono'
+        }
+        .green{
+          background-color: #8BC3A3;
+        }
+        .jumbotron{
+          margin-bottom: 0rem;
+        }
+        h2{
+          margin-bottom: 0rem;
+          padding-bottom: 10px;
+        }
+    #contact{
+    padding:10px 0 10px;
+  }
+
+  .contact-text{
+    margin:45px auto;
+  }
+
+  .mail-message-area{
+    width:100%;
+    padding:0 15px;
+  }
+
+  .mail-message{
+    width: 100%;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+  }
+
+
+  .not-visible-message{
+    height:0px;
+    opacity: 0;
+  }
+
+  .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+
+/* Input Styles */
+
+  .form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .form:hover{
+    border:1px solid #8BC3A3;
+  }
+
+  .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #8BC3A3;
+  }
+
+  .textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  
+/* Generic Button Styles */
+
+  .button{
+    padding:8px 12px;
+    background:#0A5175;
+    display: block;
+    width:120px;
+    margin:10px 0 0px 0;
+    border-radius:0px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align:center;
+    font-size:0.8em;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .button:hover{
+    background:#8BC3A3;
+    color:white;
+  }
+
+/* Send Button Styles */
+
+  .form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    border-radius:3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .form-btn:hover{
+    background:#111;
+    color: white;
+    border:none;
+  }
+
+  .form-btn:active{
+    opacity: 0.9;
+  }
+/*.center{
+  margin-top:330px;
+}*/
+input {
+    position: relative;
+    z-index: 9999;
+}
+select {
+  height: 50px;
+}
+.bord{
+  border-bottom: 1px solid lavender;
+  padding: 10px 0px 10px 0px;
+}
+img{
+  width: 45px;
+}
+.padup{
+  padding-top: 20px;
+}
+.hilite{
+  background-color: lightgrey;
+}
+.btnpad{
+  margin-right: 10px;
+}
+.btn{
+  border-radius: 0px;
+}
+
+  </style>
+</head>
+
+
+<body>
+<div class="container-narrow roboto"> 
+
+  <div class="jumbotron">
+    <h1 class="center bold ">Z E E Y A</h1> <br>
+    <h4 class="center "><i> an online marketplace to buy and sell upcoming exercise classes at a discount to retail</i></h4>
+  </div> 
+
+<br><br><br>
+
+  <div class="inner contact">
+                <!-- Form Area -->
+                <div class="contact-form">
+                    <!-- Form -->
+                    <form id="buyerform" class="center">
+                        <!-- Left Inputs -->
+                       <div class="container">
+                        <div class="wow animated slideInLeft" data-wow-delay=".5s">
+                            <!-- Name -->
+                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
+                            <!-- Email -->
+                            <input type="text" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+                                                
+                            <!-- Exercise Category, Drop Down -->
+                            <select required class="form" id="exerciseType">
+                              <option value="" disabled selected hidden> Exercise Type </option>
+                              <option value="Cycling"> Cycling </option>
+                              <option value="Dance/Barre"> Dance/Barre </option>
+                              <option value="HIIT"> HIIT </option>
+                              <option value="Pilates"> Pilates </option>
+                              <option value="Running"> Running </option>
+                            </select>
+                            <!-- Class -->
+                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Class Name, Studio Name"/>
+                            <div class="row">
+
+                              <div class="col-md-6"><!-- Start Time -->
+                            <input type="text" name="starttime" id="starttime" required="required" class="form" placeholder="Start Time" /></div>
+                              <div class="col-md-6"><!-- End Time -->
+                            <input type="text" name="endtime" id="endtime" required="required" class="form" placeholder="End Time" /></div>
+                            </div>
+                          </div>
+                          
+                            
+                        </div><!-- End of Form Inputs-->
+                   
+                        <!-- Bottom Submit -->
+                        <div class="relative fullwidth col-md-12">
+                            <!-- Send Button -->
+                            <button type="button" id="submit" name="submit" class="form-btn semibold">Submit</button> 
+                        </div><!-- End Bottom Submit -->
+                      
+                       
+                    </form>
+                </div><!-- End Contact Form Area -->
+            </div><!-- End Inner -->
+            <div id="validation"></div>
+
+    <!-- The Modal -->
+  <div class="modal roboto" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title center">Edit Your Submission</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <!-- Form Area -->
+                <div class="contact-form">
+                    <!-- Form -->
+                    <form id="buyerform" class="center">
+                        <!-- Left Inputs -->
+                       <div class="container">
+                        <div class="wow animated slideInLeft" data-wow-delay=".5s">
+                            <!-- Name -->
+                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
+                            <!-- Email -->
+                            <input type="text" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+                                                
+                            <!-- Exercise Category, Drop Down -->
+                            <select required class="form" id="exerciseType">
+                              <option value="" disabled selected hidden> Exercise Type </option>
+                              <option value="Cycling"> Cycling </option>
+                              <option value="Dance/Barre"> Dance/Barre </option>
+                              <option value="HIIT"> HIIT </option>
+                              <option value="Pilates"> Pilates </option>
+                              <option value="Running"> Running </option>
+                            </select>
+                            <!-- Class -->
+                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Class Name, Studio Name"/>
+                            <div class="row">
+
+                              <div class="col-md-6"><!-- Start Time -->
+                            <input type="text" name="starttime" id="starttime" required="required" class="form" placeholder="Start Time" /></div>
+                              <div class="col-md-6"><!-- End Time -->
+                            <input type="text" name="endtime" id="endtime" required="required" class="form" placeholder="End Time" /></div>
+                            </div>
+                          </div>
+                          
+                            
+                        </div><!-- End of Form Inputs-->
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" id="submit" name="submit" class="form-btn semibold" data-dismiss="modal">Save</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div> <!--end of modal-->
+
+<br>
+
+</div> <!--end of container div-->
+</body>
+</html>

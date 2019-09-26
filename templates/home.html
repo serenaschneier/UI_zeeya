@@ -1,0 +1,119 @@
+<html>
+<head>
+    
+    <!-- JQuery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+
+    <style>
+        .center{
+            text-align: center;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .centerImg{
+            margin: auto;
+            display: block;
+        }
+        #buyer{
+          background: white;
+        }
+        #seller{
+          background: white;
+        }
+        .roboto{
+          font-family: 'Roboto Mono'
+        }
+        .green{
+          background-color: #8BC3A3;
+        }
+        .jumbotron{
+          margin-bottom: 0rem;
+        }
+        h2{
+          margin-bottom: 0rem;
+          padding-bottom: 10px;
+        }
+        /* Send Button Styles */
+
+  .form-btn{
+    width:90px;
+    display: block;
+    height: auto;
+    padding:5px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    border-radius:3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .form-btn:hover{
+    background:#111;
+    color: white;
+    border:none;
+  }
+
+  .form-btn:active{
+    opacity: 0.9;
+  }
+
+
+    </style>
+
+    
+</head>
+<body>
+
+
+<div class="container-narrow roboto">
+  <div class="jumbotron">
+    <h1 class="center bold"><b>Z E E Y A<b></h1> <br>
+    <h4 class="center "><i> an online marketplace to buy and sell upcoming exercise classes at a discount to retail</i></h4>
+  </div> 
+
+<br><br><br>
+    <h2 class="center">I AM A...</h2>
+<br>
+
+  <!--Boxes for sellers and buyers -->
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"><img id="buyer" src="{{url_for('static', filename='buyer.png')}}" alt="buyer img" class="centerImg"></div>
+    <div class="col-md-3"><img id="seller" src="{{url_for('static', filename='seller.png')}}" alt="seller img" class="centerImg"></div>
+    <div class="col-md-3"></div>
+  </div><br>
+
+   <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3 center bold roboto">
+                                  <button type="button" id="submit-buyer" name="submit" class="form-btn semibold">buyer</button> 
+
+    </div>
+    <div class="col-md-3 center bold roboto">
+                                <button type="button" id="submit-seller" name="submit" class="form-btn semibold">seller</button> 
+  </button><div class="col-md-3"></div>
+</div>
+
+  </div> 
+</div> <!--end of container div-->
+
+</body>
+</html>
