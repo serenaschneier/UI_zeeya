@@ -148,7 +148,7 @@ var editEntry = function(idnum){
 	var edited_entry = {
 		"Id": idnum,
 		"Name": "Serena Schneier",
-		"Email": "scs2208@barnard.edu",
+		"Email": updated_entry["Email"],
 		"Exercise Type": updated_entry["Exercise Type"],
 		"Class Name": updated_entry["Class Name"],
 		"Studio": updated_entry["Studio"],
@@ -192,11 +192,12 @@ var displayEntries = function(entries){
 			var editbtn = '<span></span>';
 			var editmodal = '';
 			var match = entries[i];
-			//if email is acct owner, give delete and edit permissions
-			if (match["Email"] == "scs2208@barnard.edu"){
-				delbtn = '<button type="button" id="'+match["Id"]+'"class="btn btn-lg btn-outline-danger delete btnpad"><span class="glyphicon glyphicon-remove"></button>';
-				editbtn = '<button type="button" id="'+match["Id"]+'"class="btn btn-lg btn-outline-warning edit btnpad" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span></button>';
-			}
+			
+			//give delete and edit permissions
+			
+			delbtn = '<button type="button" id="'+match["Id"]+'"class="btn btn-lg btn-outline-danger delete btnpad"><span class="glyphicon glyphicon-remove"></button>';
+			editbtn = '<button type="button" id="'+match["Id"]+'"class="btn btn-lg btn-outline-warning edit btnpad" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span></button>';
+			
 
 			var row = $("<div class='row bold bord'>");
 

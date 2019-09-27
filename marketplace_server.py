@@ -3,6 +3,7 @@ from flask import render_template
 from flask import Response, request, jsonify
 app = Flask(__name__)
 
+'''
 entries = [{
 	"Id": 1,
 	"Name": "Elizabeth",
@@ -254,8 +255,9 @@ entries = [{
 	"Studio": "STEPS on Broadway",
 	"Time": "6:00pm to 7:30pm"
 }
-]
+]'''
 
+entries = []
 
 ''' homepage '''
 @app.route('/', methods=['GET','POST'])
@@ -279,10 +281,12 @@ def addhelper():
 	
 	global cur_id
 	global entries
-	last_entry = entries[len(entries)-1]
-	cur_id = last_entry["Id"]
+	if len(entries) > 0:
+		last_entry = entries[len(entries)-1]
+		cur_id = last_entry["Id"]
+	else:
+		cur_id = 0
 	cur_id += 1
-
 	new_entry = {
 		"Id": cur_id,
 		"Name": json_data["Name"],
@@ -369,5 +373,5 @@ def edithelper():
 	return jsonify(entries=entries)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run('0.0.0.0')
 
