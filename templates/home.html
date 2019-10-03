@@ -24,6 +24,8 @@
         .centerImg{
             margin: auto;
             display: block;
+            /*height: 300px;*/
+            /*border: 2px solid yellow;*/
         }
         #buyer{
           background: white;
@@ -47,7 +49,7 @@
         /* Send Button Styles */
 
   .form-btn{
-    width:90px;
+    width:130px;
     display: block;
     height: auto;
     padding:5px;
@@ -75,44 +77,98 @@
     opacity: 0.9;
   }
 
+  .container-fluid{
+    padding: 15px;
+  }
+  .nav-link-style{
+    margin-top: 10px;
+    margin-left: 10px
+  }
+  .navbar-brand{
+    /*display: inline-block;*/
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    /*margin-right: 1rem;*/
+    font-size: 2rem;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+
+  .workoutglyph{
+    height: 65px;
+    width: 65px;
+  }
+  .wid{
+    max-width: 800px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    opacity: 0.95;
+  }
+
 
     </style>
 
     
 </head>
-<body>
+<body background="../static/workoutcollage.png">
 
 
 <div class="container-narrow roboto">
-  <div class="jumbotron">
-    <h1 class="center bold"><b>Z E E Y A<b></h1> <br>
-    <h4 class="center "><i> an online marketplace to buy and sell upcoming exercise classes at a discount to retail</i></h4>
-  </div> 
-
+  <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-between">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0">
+            <ul class="navbar-nav">
+                <!-- <li class="nav-item active">
+                    <a class="navbar-brand" href="#"><img src="https://static.onecms.io/wp-content/uploads/sites/35/2016/08/04013515/Apple_Emoji_Body_Builder.png" alt="Logo" style="width:35px; height:35px"> </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link nav-link-style" href="/buyerform">Buyers</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link nav-link-style" href="/sellerform">Sellers</a>
+                </li>
+            </ul>
+        </div>
+        <a href="/" class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25">Z E E Y A</a>
+        <div class="navbar-collapse collapse dual-nav w-50 order-2">
+            
+        </div>
+    </div>
+</nav>
+   
+</div>
 <br><br><br>
-    <h2 class="center">I AM A...</h2>
-<br>
+<br><br><br>
 
-  <!--Boxes for sellers and buyers -->
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3"><img id="buyer" src="{{url_for('static', filename='buyer.png')}}" alt="buyer img" class="centerImg"></div>
-    <div class="col-md-3"><img id="seller" src="{{url_for('static', filename='seller.png')}}" alt="seller img" class="centerImg"></div>
-    <div class="col-md-3"></div>
-  </div><br>
+<div class="container roboto wid">
+  <br>
+   <div class="row white bold centerImg">
 
-   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3 center bold roboto">
-                                  <button type="button" id="submit-buyer" name="submit" class="form-btn semibold">buyer</button> 
+        <div class="center" style="font-size: 16px;">buy & sell workout classes occurring within 24 hours at a discount to retail</div><br>
 
+        <div class="centerImg center">
+          <img class="workoutglyph" src="{{url_for('static', filename='cycling.png')}}">
+          <img class="workoutglyph" src="{{url_for('static', filename='dancebarre.png')}}">
+          <img class="workoutglyph" src="{{url_for('static', filename='HIIT.png')}}">
+          <img class="workoutglyph" src="{{url_for('static', filename='pilates.png')}}">
+          <img class="workoutglyph" src="{{url_for('static', filename='running.png')}}">
+        </div><br>
+    </div><p></p>
+    <div class="row white" style="justify-content: center;">
+    <div class="col-md-3 center bold">
+        <button type="button" id="submit-buyer" name="submit" class="form-btn semibold">Buy a Class</button> 
     </div>
     <div class="col-md-3 center bold roboto">
-                                <button type="button" id="submit-seller" name="submit" class="form-btn semibold">seller</button> 
-  </button><div class="col-md-3"></div>
-</div>
+        <button type="button" id="submit-seller" name="submit" class="form-btn semibold">Sell a Class</button> 
+    </div> 
 
   </div> 
+  <br>
 </div> <!--end of container div-->
 
 </body>
