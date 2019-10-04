@@ -4,7 +4,6 @@ var specs = [];
 
 $(document).ready(function(){
 	
-
 	//get buyer's filter specifications
 	$("button").click(function(){
 		updateButton($(this).attr('id'));
@@ -17,24 +16,23 @@ $(document).ready(function(){
 
 
 }); //end of doc ready fxn
-var click_count = {"Cycling": 0, "Dance/Barre": 0, "HIIT": 0, "Pilates": 0, "Running": 0}
+var click_count = {"Cycling": 0, "DanceBarre": 0, "HIIT": 0, "Pilates": 0, "Running": 0}
 
 var updateButton = function(id){
 	click_count[id] += 1;
 
 	if (click_count[id] % 2 != 0){
-		$(this).css('background','black');
+		$('#'+id).css('background','black');
 		specs.push(id);
 		displayEntries(specs);
 	}
 	else{
-		$(this).css('background', '#8BC3A3');
+		$('#'+id).css('background', '#8BC3A3');
 		console.log('remove entries related to ' + id);
 		//remove specs value == id
 		specs.splice($.inArray(id,specs),1);
 		displayEntries(specs);
-	}
-	
+	}	
 }
 
 var displayEntries = function(specs){
@@ -83,7 +81,7 @@ var displayEntries = function(specs){
 					$(row).append(col_studio);
 
 					var col_btns = $("<div class='col-md-2 padup'>");
-					 var mailbtn = "<a href='mailto:"+match["Email"]+"'class='btn btn-lg btn-outline-primary mail'><span class='glyphicon glyphicon-envelope'></span></button>";
+					var mailbtn = "<a href='mailto:"+match["Email"]+"'class='btn btn-lg btn-outline-primary mail'><span class='glyphicon glyphicon-envelope'></span></button>";
 
 					$(col_btns).append(mailbtn);
 					$(row).append(col_btns);
@@ -94,6 +92,19 @@ var displayEntries = function(specs){
 			}
 
 		}
+	}
+	//console.log('val of row')
+	//console.log(row)
+	//console.log(specs)
+	var no_results = "<div id='noresults' class='center'><div> no listings available at the moment... </div><div> check back soon! </div></div>";
+	if (row == null && specs.length == 0){
+		$("#results").empty();
+	}
+	else if (row == null && specs.length != 0){
+		$("#results").append(no_results);
+	}
+	else {
+		$("#noresults").hide();
 	}
 
 };
